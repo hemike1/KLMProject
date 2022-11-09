@@ -14,6 +14,16 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+
+        ArrayList<szavazat> szavazatok = new ArrayList<>();
+
+        RandomAccessFile raf = new RandomAccessfile("szavazatok.txt","r");
+        String sor = raf.readLine();
+        sor=raf.readLine();
+        while(sor != null){
+            szavazat.add(new szavazatok(sor.split(" ")));
+            sor=raf.readLine();
+        }
     }
 
     /**
