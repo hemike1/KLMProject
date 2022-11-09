@@ -25,6 +25,25 @@ public class Main extends javax.swing.JFrame {
             sor=raf.readLine();
         }
     }
+    
+    public static boolean szavatSzamol(int szemely) {
+        if(szavazatok.get(szemely).getSzavazat() >= 100) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public static int fuggetlenSzamol() {
+        int fuggetlen = 0;
+        for(int i = 0; i < szavazatok.length(); i++) {
+            if(szavazatok.get(i).getPart() == "-") {
+                fuggetlen++;
+            }
+        }
+        
+        return fuggetlen;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
