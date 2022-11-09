@@ -1,4 +1,9 @@
-public class szavazat(){
+
+/**
+ *
+ * @author tokri
+ */
+public class Szavazat {
 
     private int korzet;
     private int szavazat;
@@ -6,7 +11,7 @@ public class szavazat(){
     private String kernev;
     private String part;
 
-    public adat(String[] adat) {
+    public Szavazat(String[] adat) {
         this.korzet = Integer.parseInt(adat[0]);
         this.szavazat = Integer.parseInt(adat[1]);
         this.veznev = adat[2];

@@ -1,8 +1,11 @@
+
+import java.io.RandomAccessFile;
+import java.util.ArrayList;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author tokri
@@ -14,34 +17,40 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        
+        ArrayList<Szavazat> szavazatok = new ArrayList<>();
 
-        ArrayList<szavazat> szavazatok = new ArrayList<>();
-
-        RandomAccessFile raf = new RandomAccessfile("szavazatok.txt","r");
-        String sor = raf.readLine();
-        sor=raf.readLine();
-        while(sor != null){
-            szavazat.add(new szavazatok(sor.split(" ")));
-            sor=raf.readLine();
+        try {
+            RandomAccessFile raf = new RandomAccessFile("szavazatok.txt", "r");
+            String sor = raf.readLine();
+            sor = raf.readLine();
+            while (sor != null) {
+                szavazatok.add(new Szavazat(sor.split(" ")));
+                sor = raf.readLine();
+            }
+        } catch (Exception e) {
+            System.out.println("HIBA! " + e);
         }
+        
+        System.out.println(szavazatok.size());
     }
     
     public static boolean szavatSzamol(int szemely) {
-        if(szavazatok.get(szemely).getSzavazat() >= 100) {
+        if (szavazatok.get(szemely).getSzavazat() >= 100) {
             return true;
         } else {
             return false;
         }
     }
-    
+
     public static int fuggetlenSzamol() {
         int fuggetlen = 0;
-        for(int i = 0; i < szavazatok.length(); i++) {
-            if(szavazatok.get(i).getPart() == "-") {
+        for (int i = 0; i < szavazatok.length(); i++) {
+            if (szavazatok.get(i).getPart() == "-") {
                 fuggetlen++;
             }
         }
-        
+
         return fuggetlen;
     }
 
